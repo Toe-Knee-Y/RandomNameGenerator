@@ -73,3 +73,7 @@ class RandomPersonGeneratorClass:
             person = random.choice(self.name_list)
             self.name_list.remove(person)
             return person
+
+
+if __name__ == "__main__":
+    f = open("./hello.txt", "w+")
