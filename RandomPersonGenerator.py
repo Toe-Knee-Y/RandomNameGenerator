@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, TextIO
 import random
 
 
@@ -18,7 +18,7 @@ class RandomPersonGeneratorClass:
         self.name_list = names.split(", ")
         self.name_list_str = names
 
-    def _is_empty(self) -> bool:
+    def is_empty(self) -> bool:
         """Check if the name_list is empty"""
         return self.name_list == []
 
@@ -65,7 +65,7 @@ class RandomPersonGeneratorClass:
         """Return the str of the person's name, if the list is empty, it will
         reset back to what the str is
         """
-        if self._is_empty():
+        if self.is_empty():
             self._reset()
             return "the list is empty, it is going to reset"
 
@@ -74,6 +74,38 @@ class RandomPersonGeneratorClass:
             self.name_list.remove(person)
             return person
 
+# def num_container(num_empty, exchange_rate):
+#     if num_empty < exchange_rate:
+#         return 0
+#     else:
+#         result = num_empty // exchange_rate
+#         return result + num_container(num_empty // exchange_rate, exchange_rate)
+#
+#
+# def maximumContainers(scenarios):
+#     for string in scenarios:
+#         values = string.split(" ")
+#         starting_budget = int(values[0])
+#         full_price = int(values[1])
+#         exchange_rate = int(values[2])
+#
+#         num_of_container = starting_budget // full_price + num_container(starting_budget // full_price, exchange_rate)
+#         print(num_of_container)
+
+
+def construct_file(output_file: TextIO):
+    name_list = output_file.readlines()[6:]
+    for i in range(len(name_list)):
+        name_list[i] = name_list[i][0: len(name_list[i]) - 1] # this gets rid of the new line character at the end
+    names = ", ".join(name_list)
+    rpg = RandomPersonGeneratorClass(names)
+
+    output_file.write("\nHere is the list of names in order:\n")
+    while not (rpg.is_empty()):
+        output_file.write(rpg.next() + "\n")
+
 
 if __name__ == "__main__":
-    f = open("./hello.txt", "w+")
+    file = open("./testing.txt", "r+")
+    construct_file(file)
+    file.close()

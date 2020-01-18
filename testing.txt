@@ -1,0 +1,11 @@
+Instruction for the file:
+- Rewrite after the line of '#'
+- Replace the names with the ones you want
+- Make sure to have one blank line at the end of this file (enter key)
+
+######################################################################
+Tony
+Arnold
+Max
+Anson
+
