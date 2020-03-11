@@ -4,8 +4,4 @@ Instruction for the file:
 - Make sure to have one blank line at the end of this file (enter key)
 
 ######################################################################
-Tony
-Arnold
-Max
-Anson
 
